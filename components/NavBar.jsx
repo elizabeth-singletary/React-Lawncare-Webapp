@@ -26,10 +26,10 @@ export default function NavBar({ customClassName }) {
         <nav id="header" className={navbarClassName}>
         <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2 pr-4">
           <div class="pl-4 flex items-center">
-            <a class="toggleColour no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
+            <Link class="toggleColour no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="./">
               <img class="h-16 fill-current inline" src="/EvergreenLogo.svg" alt="Evergreen Logo" />
               EVERGREEN LAWN CARE
-            </a>
+            </Link>
           </div>
           <div class="block lg:hidden pr-4">
             <button id="nav-toggle" class="flex items-center p-1 text-pink-800 hover:text-gray-900 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
