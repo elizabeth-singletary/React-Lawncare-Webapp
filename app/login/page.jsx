@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./page.module.css"
 import NavBar from "@/components/NavBar";
 
@@ -29,7 +30,7 @@ export default function login () {
       <button class="text-center w-full bg-blue-700 rounded-full text-white py-3 font-medium">Login</button>
     </form>
   </div>
-  <p class="text-gray-800 pt-8">New to Evergreen Lawncare?</p> <a href="#!" class="text-blue-700 font-medium">Sign Up</a>  
+  <p class="text-gray-800 pt-8">New to Evergreen Lawncare?</p> <Link href="/signup" class="text-blue-700 font-medium">Sign Up</Link>  
   <div className="w-full h-10 overflow-hidden">
       <div className={styles.wave}></div>
     </div>
