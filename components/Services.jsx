@@ -1,7 +1,7 @@
 export default function Services() {
     return (
         <section class="bg-white border-b py-8">
-      <div class="container mx-auto flex flex-wrap pt-4 pb-12">
+      <div class="container mx-auto flex flex-wrap pt-4 pb-12 ml-2 mr-2">
         <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
           Services
         </h2>
@@ -49,14 +49,11 @@ export default function Services() {
         <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
           <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
             <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-              <p class="w-full text-gray-600 text-xs md:text-sm px-6">
-                xGETTING STARTED
-              </p>
-              <div class="w-full font-bold text-xl text-gray-800 px-6">
-                Lorem ipsum dolor sit amet.
+              <div class="w-full font-bold text-xl text-gray-800 px-6 mt-4">
+              Weed Control and Fertilization 
               </div>
               <p class="text-gray-800 text-base px-6 mb-5">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.
+              Our comprehensive weed control and fertilization program ensures that your lawn remains free from unsightly weeds while receiving the necessary nutrients for optimal growth and vitality.
               </p>
             </a>
           </div>

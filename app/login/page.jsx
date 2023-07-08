@@ -11,10 +11,10 @@ export default function login () {
   <NavBar customClassName={loginNavbarClassName} />
 <div class={styles.innerheader}>
 <div class="h-screen flex flex-col justify-center items-center">
-        <div class=" flex w-96 ">
+        {/* <div class="hidden lg:hidden xl:flex w-96 ">
         <img src="/EvergreenLogo.svg" alt="Evergreen Logo" />
-        </div>
-    <div class="bg-white w-96 shadow-xl rounded-lg p-5 py-8">
+        </div> */}
+    <div class="bg-white w-96 shadow-xl rounded-lg p-5 py-8 mt-20">
         <p class="text-sm text-gray-800">Welcome Back! Please sign into your account.</p>
             <form class="space-y-5 mt-5">
                 <input type="text" class="w-full h-12 border border-gray-800 rounded px-3" placeholder="Email" />
@@ -22,7 +22,7 @@ export default function login () {
         <div class="w-full flex items-center  border border-gray-800 rounded px-3">
        
         <input type="password" class="w-4/5 h-12"  placeholder="Password" />
-        <span class="text-blue-700 hover:bg-blue-400 rounded-full px-3 ">afficher</span>
+        <span class="text-blue-700 hover:bg-blue-400 rounded-full px-3 ">Reveal</span>
       </div>
       <div class="">
             <a href="#!" class="font-medium text-blue-700 hover:bg-blue-300 rounded-full p-2">Forgot Password?</a>
