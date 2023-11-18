@@ -24,33 +24,25 @@ export default function signup() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     // Create a Supabase client
     const supabaseUrl = 'https://armysdalwzlfvbxvsyxi.supabase.co';
-    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_KEY;
+    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
     const supabase = createClient(supabaseUrl, supabaseKey);
 
     try {
-      // Insert the form data into the database table
-      const { data, error } = await supabase
-        .from("users")
-        .insert([
-          {
-            firstname: formData.firstName,
-            lastname: formData.lastName,
-            email: formData.email,
-            password: formData.password,
-          },
-        ]);
+      const {
+        data: { session, error },
+      } = await supabase.auth.signUp({
+        email: formData.email,
+        password: formData.password,
+        options: {
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+        }
+      });
 
-      if (error) {
-        console.error("Error:", error);
-      } else {
-        console.log("Success:", data);
-   
-      }
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error:", data.error);
     }
 
     // Reset the form fields
@@ -114,7 +106,7 @@ return (
                     </div>
                     <div class="flex -mx-3">
                         <div class="w-full px-3 mb-5">
-                            <button class="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold">REGISTER NOW</button>
+                            <button type="submit" onSubmit={handleSubmit} class="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold">REGISTER NOW</button>
                         </div>
                     </div>
                 </form>
