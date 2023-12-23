@@ -1,6 +1,6 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
-import NavBar from '@/components/NavBar'
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
       <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
-      <body className="leading-normal tracking-normal text-white gradient" style={bodyStyle}>{children}</body>
+      <body className="leading-normal tracking-normal text-white" style={bodyStyle}>{children}</body>
     </html>
   )
 }

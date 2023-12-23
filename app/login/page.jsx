@@ -3,10 +3,17 @@ import Link from "next/link";
 import styles from "./page.module.css"
 import NavBar from "@/components/NavBar";
 import { createClient } from '@supabase/supabase-js';
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { useRouter } from 'next/navigation'
+import { AuthContext } from '@/app/context/authContext';
+
 
 export default function login () {
+
+  const userContext = useContext(AuthContext);
+  const router = useRouter();
   const loginNavbarClassName = "fixed w-full z-30 top-0 bg-white text-gray-800";
+  const [toggle, setToggle] = useState(true);
 
   const [formData, setformData] = useState({
     email: "",
@@ -25,10 +32,7 @@ export default function login () {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("entering handleSubmit")
-    console.log(event.target)
   
-
     const supabaseUrl = 'https://armysdalwzlfvbxvsyxi.supabase.co';
     const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
     const supabase = createClient(supabaseUrl, supabaseKey);
@@ -37,18 +41,26 @@ export default function login () {
       email: formData.email,
       password: formData.password
     })
-    console.log(data, error)
-  
-    // Reset the form fields
-    setformData({
-      email: "",
-      password: "",
-    });
+
+    
+    
+    if (data.user) {
+      return (
+        <AuthContext.Provider value={data}>
+          {router.push('/UserDashboard', { scroll: true })}
+        </AuthContext.Provider>
+      );
+    }
+  }
+
+  function handletoggle() {
+    setToggle(!toggle);
   }
 
 
 
   return (   
+  <AuthContext.Provider value={userContext}>
   <div className={styles.header}>
   <NavBar customClassName={loginNavbarClassName} />
   <div class={styles.innerheader}>
@@ -63,8 +75,8 @@ export default function login () {
                   
           <div class="w-full flex items-center  border border-gray-800 rounded px-3">
         
-          <input type="password" name="password" onChange={handleChange} class="text-black w-4/5 h-12"  placeholder="Password" />
-          <span class="text-blue-700 hover:bg-blue-400 rounded-full px-3 ">Reveal</span>
+          <input type={toggle ? "password" : "text"} name="password" onChange={handleChange} class="text-black w-4/5 h-12"  placeholder="Password" />
+          <span class="text-blue-700 hover:bg-blue-400 rounded-full px-3" onClick={handletoggle}>Reveal</span>
         </div>
         <div class="">
               <a href="#!" class="font-medium text-blue-700 hover:bg-blue-300 rounded-full p-2">Forgot Password?</a>
@@ -93,6 +105,7 @@ export default function login () {
     </svg>
   </div>
   </div>
+  </AuthContext.Provider>
   );
 }
 

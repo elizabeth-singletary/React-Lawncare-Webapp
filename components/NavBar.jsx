@@ -19,7 +19,7 @@ export default function NavBar({ customClassName }) {
     };
   }, []);
 
-  const navbarClassName = customClassName || (scrollPos > 10 ? "fixed w-full z-30 top-0 bg-white text-gray-800" : "fixed w-full z-30 top-0");
+  const navbarClassName = customClassName || (scrollPos > 10 ? "fixed w-full z-50 top-0 bg-white text-gray-800" : "fixed w-full z-30 top-0");
   const navActionClassName = scrollPos > 10 ? "mx-auto lg:mx-0 hover:underline bg-sky-500 text-white font-bold rounded-full my-4 lg:my-0 py-4 px-8 shadow-lg opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" : "mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-4 lg:my-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out";
 
     return (
