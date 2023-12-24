@@ -1,12 +1,12 @@
 
-import Sidebar from '@/components/Sidebar.jsx';
+import Sidebar from '@/components/SideBar';
 import NavBar from '@/components/NavBar';
 import React from 'react';
 import { Card, CardActionArea, CardContent, Typography } from '@mui/material';
 
 
 export default function UserDashboard () {
-  const customClassName = "w-full z-50 top-0 bg-sky-500 text-gray-800"
+  const customClassName = "w-full z-50 top-0 gradientuser text-gray-800"
   return (
     <div className='bg-gray-100 h-full flex flex-col'>
     <div>

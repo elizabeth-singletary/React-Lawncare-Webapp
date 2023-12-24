@@ -1,4 +1,21 @@
+'use client'
+import React, { useState } from "react";
+import Consultation from "@/components/Consultation";
+
+
 export default function Hero() {
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+
     return (
         <section>
         <div class="pt-24 pl-8">
@@ -11,9 +28,10 @@ export default function Hero() {
             <p class="leading-normal text-2xl mb-8">
             Revitalize Your Lawn with a free consulation and allow us to deliver exceptional service. 
             </p>
-            <button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+            <button onClick={handleClickOpen} class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
               Book a Consulation
             </button>
+            <Consultation isOpen={open} onClose={handleClose}/>
           </div>
           <div class="w-full md:w-3/5 py-6 text-center">
             <img class="w-full md:w-4/5 z-50 ml-4 md:ml-8 pl-4" src="/hero.svg" />

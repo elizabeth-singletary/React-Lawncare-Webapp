@@ -2,10 +2,12 @@
 import NavBar from "@/components/NavBar";
 import React, { useState } from "react";
 import { createClient } from '@supabase/supabase-js';
+import { useRouter } from 'next/navigation'
 
 
 export default function signup() {
 
+  const router = useRouter();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -38,8 +40,21 @@ export default function signup() {
         options: {
           firstName: formData.firstName,
           lastName: formData.lastName,
-        }
+        },
       });
+
+      
+    const { error_user } = await supabase
+      .from('profiles')
+      .insert({ 
+        first_name: formData.firstName,
+        last_name: formData.lastName,
+        email: formData.email
+    })
+
+      console.log(error_user)
+
+      router.push('/UserDashboard', { scroll: true })
 
     } catch (error) {
       console.error("Error:", data.error);

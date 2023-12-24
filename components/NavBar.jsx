@@ -2,10 +2,26 @@
 
 import React, { useState, useEffect } from "react";
 import Link from 'next/link';
+import { createClient } from '@supabase/supabase-js';
 
 
 export default function NavBar({ customClassName }) {
-    const [scrollPos, setScrollPos] = useState(0);
+  const [scrollPos, setScrollPos] = useState(0);
+  const supabaseUrl = 'https://armysdalwzlfvbxvsyxi.supabase.co';
+  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  const supabase = createClient(supabaseUrl, supabaseKey);
+
+  const [isLoggedin, setIsLoggedin] = useState(false);
+
+   const getUser = async () => {
+      const { data: { user } } = await supabase.auth.getUser()
+      if (user) {
+        setIsLoggedin(true)
+      }
+      return user;
+    }
+      
+  const user = getUser(); 
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,7 +72,7 @@ export default function NavBar({ customClassName }) {
               id="navAction"
               class={navActionClassName}
             >
-              Login
+              {isLoggedin ? "My Account" : "Login"}
             </button>
             </Link>
             

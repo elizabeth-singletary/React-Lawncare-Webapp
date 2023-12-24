@@ -12,6 +12,10 @@
   background: linear-gradient(90deg, #47aee2 0%, #ffffff 100%);
 }
 
+.gradientuser {
+  background: linear-gradient(90deg, #ffffff 30%, #47aee2 100%);
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
