@@ -1,6 +1,9 @@
 'use client'
 import { useState } from 'react';
-import DatePicker from 'react-date-picker';
+import DateTimePicker from 'react-datetime-picker';
+import 'react-datetime-picker/dist/DateTimePicker.css';
+import 'react-calendar/dist/Calendar.css';
+import 'react-clock/dist/Clock.css';
 
 
 
@@ -9,7 +12,7 @@ export default function DatePickerComp() {
 
   return (
     <div>
-      <DatePicker onChange={onChange} value={value} />
+      <DateTimePicker onChange={onChange} value={value} />
     </div>
   );
 }
