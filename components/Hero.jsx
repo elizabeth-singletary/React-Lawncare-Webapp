@@ -8,7 +8,7 @@ import { createClient } from "@supabase/supabase-js";
 export default function Hero() {
   const router = useRouter();
   const [open, setOpen] = useState(false);
-  const [isLoggedin, setIsLoggedin] = useState(false);
+
 
   const handleClickOpen = async () => {
     const supabaseUrl = 'https://armysdalwzlfvbxvsyxi.supabase.co';
@@ -16,7 +16,6 @@ export default function Hero() {
     const supabase = createClient(supabaseUrl, supabaseKey);
     const { data: { user } } = await supabase.auth.getUser()
     if (user) {
-      setIsLoggedin(true)
       setOpen(true);
     } else {
       router.push('/login', { scroll: true })
