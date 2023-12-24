@@ -54,7 +54,7 @@ export default function signup() {
 
       console.log(error_user)
 
-      router.push('/UserDashboard', { scroll: true })
+      router.push('/', { scroll: true })
 
     } catch (error) {
       console.error("Error:", data.error);

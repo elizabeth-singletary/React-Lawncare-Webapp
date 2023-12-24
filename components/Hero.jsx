@@ -1,13 +1,27 @@
 'use client'
 import React, { useState } from "react";
 import Consultation from "@/components/Consultation";
+import { useRouter } from "next/navigation";
+import { createClient } from "@supabase/supabase-js";
 
 
 export default function Hero() {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
+  const [isLoggedin, setIsLoggedin] = useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
+  const handleClickOpen = async () => {
+    const supabaseUrl = 'https://armysdalwzlfvbxvsyxi.supabase.co';
+    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    const supabase = createClient(supabaseUrl, supabaseKey);
+    const { data: { user } } = await supabase.auth.getUser()
+    if (user) {
+      setIsLoggedin(true)
+      setOpen(true);
+    } else {
+      router.push('/login', { scroll: true })
+    }
+    
 
   };
 
@@ -28,9 +42,11 @@ export default function Hero() {
             <p class="leading-normal text-2xl mb-8">
             Revitalize Your Lawn with a free consulation and allow us to deliver exceptional service. 
             </p>
+            
             <button onClick={handleClickOpen} class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
               Book a Consulation
             </button>
+        
             <Consultation isOpen={open} onClose={handleClose}/>
           </div>
           <div class="w-full md:w-3/5 py-6 text-center">

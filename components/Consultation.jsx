@@ -8,10 +8,13 @@ import DialogActions from '@mui/material/DialogActions';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import DatePickerComp from '@/components/DatePicker';
+import DateTimePicker from 'react-datetime-picker';
+import 'react-datetime-picker/dist/DateTimePicker.css';
+import 'react-calendar/dist/Calendar.css';
+import 'react-clock/dist/Clock.css';
+
+
 import { createClient } from '@supabase/supabase-js';
-
-
 
 export default function Consultation({isOpen, onClose}) {
 
@@ -62,6 +65,7 @@ export default function Consultation({isOpen, onClose}) {
         catch (error) {
             console.error("Error:", data.error);
         } 
+        onClose();
     }
 
       return (
@@ -129,8 +133,9 @@ export default function Consultation({isOpen, onClose}) {
               <MenuItem value="Weed Control and Fertilization">Weed Control and Fertilization</MenuItem>
             </TextField>
     
-            <div className="text-black">
-              <DatePickerComp onChange={(date) => handleChange('selectedDate', date)} />
+            <div className="text-black flex flex-col mt-5">
+                <label >Select Date and Time</label>
+                <DateTimePicker onChange={(date) => handleChange('selectedDate', date)} value={formData.selectedDate} />
             </div>
     
           </DialogContent>

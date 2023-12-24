@@ -67,7 +67,7 @@ export default function NavBar({ customClassName }) {
                 <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="#">Pricing</a>
               </li>
             </ul>
-            <Link href="/login">
+            <Link href={isLoggedin ? "/UserDashboard" : "/login"}>
               <button
               id="navAction"
               class={navActionClassName}
